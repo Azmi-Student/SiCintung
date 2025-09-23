@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SiCintung</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      /* Memuat font Dancing Script dari Google Fonts */
+      @import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap");
+
+      /* Menambahkan scroll halus pada seluruh halaman */
+      html {
+        scroll-behavior: smooth;
+        overflow: scroll; /* Pastikan scroll tetap ada */
+        height: 100%; /* Pastikan elemen bisa menggulir */
+      }
+
+      /* Menggunakan font secara manual di sini */
+      body {
+        font-family: "Dancing Script", sans-serif;
+        overflow-x: hidden; /* Mencegah scrolling horizontal pada mobile */
+      }
+
+      /* Menghilangkan scrollbar di seluruh halaman */
+      ::-webkit-scrollbar {
+        width: 0px; /* Menghapus lebar scrollbar */
+        height: 0px; /* Menghapus lebar scrollbar horizontal */
+      }
+
+      /* Garis separator */
+      .separator {
+        width: 100px;
+        height: 1px;
+        background: rgba(255, 255, 255, 0.5); /* Garis putih tipis */
+        margin: 20px auto; /* Jarak atas dan bawah */
+        box-shadow: 0 0 5px rgba(255, 255, 255, 0.6); /* Efek shadow untuk sedikit cahaya */
+      }
+
+      /* Efek highlight pada teks */
+      .highlight-text {
+        display: inline-block;
+        background-image: linear-gradient(
+          90deg,
+          #ff007f,
+          #ff8c00,
+          #ff007f,
+          #ff8c00
+        );
+        background-size: 300% 100%;
+        background-position: -100% 0;
+        color: transparent;
+        background-clip: text;
+        -webkit-background-clip: text; /* Vendor prefix untuk Webkit (Safari, Chrome) */
+        -moz-background-clip: text; /* Vendor prefix untuk Firefox */
+        animation: highlight 4s ease-in-out infinite alternate;
+        text-shadow: 0 0 10px rgba(255, 0, 127, 0.6),
+          0 0 20px rgba(255, 140, 0, 0.5); /* Glow effect */
+      }
+
+      /* Animasi untuk efek highlight berjalan */
+      @keyframes highlight {
+        0% {
+          background-position: -100% 0;
+          text-shadow: 0 0 10px rgba(255, 0, 127, 0.6),
+            0 0 20px rgba(255, 140, 0, 0.5);
+        }
+        50% {
+          background-position: 100% 0;
+          text-shadow: 0 0 20px rgba(255, 0, 127, 1),
+            0 0 40px rgba(255, 140, 0, 0.8);
+        }
+        100% {
+          background-position: -100% 0;
+          text-shadow: 0 0 10px rgba(255, 0, 127, 0.6),
+            0 0 20px rgba(255, 140, 0, 0.5);
+        }
+      }
+
+      /* Delay untuk kata "sayang" */
+      .highlight-sayang {
+        animation-delay: 0s; /* Efek pertama */
+      }
+
+      /* Delay untuk kata "Mas Azmi" */
+      .highlight-masazmi {
+        animation-delay: 1s; /* Efek kedua */
+      }
+
+      /* Efek highlight hanya pada "Cintung" */
+      .highlight-cintung {
+        animation-delay: 2s; /* Efek ketiga */
+      }
+
+      /* Styling Galeri Foto */
+      .gallery {
+        display: grid;
+        grid-template-columns: repeat(
+          auto-fill,
+          minmax(250px, 1fr)
+        ); /* Menyesuaikan dengan ukuran layar */
+        gap: 20px; /* Menambah jarak antar card */
+        margin-top: 40px;
+      }
+
+      /* Card Gambar dengan Variasi Penempatan dan Padding */
+      .gallery-item {
+        position: relative;
+        overflow: hidden;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        height: 250px; /* Menyesuaikan ukuran gambar untuk lebih kecil */
+        padding: 10px; /* Menambah jarak kiri kanan */
+      }
+
+      /* Variasi transformasi gambar untuk tampilan lebih artistik */
+      .gallery-item:nth-child(1) {
+        transform: rotate(-5deg) scale(1.1);
+      }
+
+      .gallery-item:nth-child(2) {
+        transform: translateY(15px) scale(0.95);
+      }
+
+      .gallery-item:nth-child(3) {
+        transform: rotate(5deg) scale(1.05);
+      }
+
+      .gallery-item:nth-child(4) {
+        transform: translateX(10px) scale(0.9);
+      }
+
+      .gallery-item:hover {
+        transform: rotate(0) scale(1); /* Kembali ke posisi normal saat hover */
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3); /* Menambah shadow saat hover */
+      }
+
+      .gallery img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* Membuat gambar tetap crop dengan baik */
+        border-radius: 10px;
+      }
+
+      /* Styling Caption untuk Foto */
+      .caption {
+        position: absolute;
+        bottom: 10px;
+        left: 10px;
+        background-color: rgba(0, 0, 0, 0.5);
+        color: white;
+        padding: 5px 10px;
+        border-radius: 5px;
+        font-size: 1rem;
+      }
+
+      /* Jarak dan padding untuk Scroll */
+      .scroll-section {
+        margin-bottom: 80px; /* Memberikan ruang lebih pada bagian bawah */
+      }
+
+      /* Styling untuk Galeri Kenangan */
+      .galeri-kenangan {
+        text-align: center;
+        margin-top: 40px;
+        margin-bottom: 50px;
+      }
+
+      .galeri-kenangan h2 {
+        font-size: 2.5rem;
+        color: #e02e7c; /* Warna merah muda cerah */
+        font-weight: bold;
+      }
+
+      .galeri-kenangan p {
+        font-size: 1.2rem;
+        color: #555;
+        margin-top: 10px;
+      }
+
+      /* Media Query untuk Desktop */
+      @media (min-width: 1024px) {
+        .gallery {
+          grid-template-columns: repeat(
+            4,
+            1fr
+          ); /* Menyusun 4 kolom di layar desktop */
+          gap: 30px; /* Menambah jarak antar gambar di desktop */
+        }
+
+        .gallery-item {
+          height: 300px; /* Menambah tinggi gambar untuk desktop */
+        }
+      }
+
+      /* Media Query untuk Tablet */
+      @media (max-width: 1024px) {
+        .gallery {
+          grid-template-columns: repeat(
+            2,
+            1fr
+          ); /* Menyusun 2 kolom untuk tablet */
+          gap: 20px; /* Menambah jarak antar gambar */
+        }
+
+        .gallery-item {
+          height: 250px; /* Menyesuaikan ukuran gambar untuk tablet */
+        }
+      }
+
+      /* Media Query untuk Mobile */
+      @media (max-width: 768px) {
+        .gallery {
+          grid-template-columns: 1fr; /* Menyusun 1 kolom untuk layar mobile */
+          gap: 15px; /* Menambah jarak antar gambar */
+        }
+
+        .gallery-item {
+          height: 200px; /* Menyesuaikan ukuran gambar untuk mobile */
+        }
+      }
+
+      /* Menghapus warna latar belakang pada Galeri */
+      .galeri-section {
+        /* background: linear-gradient(135deg, #f7a7c4, #d1b0fc); Menghilangkan warna latar belakang */
+        padding: 40px 0;
+        text-align: center;
+        opacity: 0;
+        animation: fadeIn 1s forwards;
+      }
+
+      /* Efek Fade In saat scroll atau page load */
+      @keyframes fadeIn {
+        0% {
+          opacity: 0;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+      
+    </style>
+  </head>
+
+  <body class="bg-gradient-to-t from-pink-300 via-purple-300 to-yellow-200">
+    <!-- Landing Page Section -->
+    <section
+      class="relative w-full h-screen flex flex-col items-center justify-center text-center py-10 px-5"
+      id="landingSection"
+    >
+      <!-- Latar belakang Gradien -->
+      <div></div>
+
+      <!-- Teks di atas separator -->
+      <p class="text-lg text-white mb-2">A Love Story About</p>
+      <!-- Diubah menjadi ini -->
+
+      <!-- Garis Separator -->
+      <div class="separator mb-4"></div>
+
+      <!-- Main Teks "SiCintung" dengan efek highlight hanya pada "Cintung" -->
+      <h1 class="text-6xl font-extrabold text-white mb-4 tracking-wide">
+        Si<span class="highlight-text highlight-cintung">Cintung</span>
+      </h1>
+
+      <!-- Deskripsi dengan efek highlight pada kata tertentu -->
+      <p class="text-xl text-white mb-8 max-w-xl mx-auto">
+        Panggilan
+        <span class="highlight-text highlight-sayang">sayang</span> dari Repan
+        untuk kakaknya, Cinta yang kini bahagia bersama
+        <span class="highlight-text highlight-masazmi">Mas Azmi</span>, sosok
+        yang selalu mengisi hari dengan senyuman
+      </p>
+
+      <!-- Button with a small animation -->
+      <button
+        id="showGalleryBtn"
+        class="text-white bg-gradient-to-r from-pink-500 to-orange-500 py-3 px-8 rounded-full text-lg shadow-lg hover:bg-pink-600 transition-colors transform hover:scale-105 duration-200"
+      >
+        Lihat Koleksi Foto SiCintung
+      </button>
+
+      <!-- Scroll Indicator -->
+      <div class="absolute bottom-5 animate-bounce scroll-section">
+        <p class="text-white text-lg">Scroll down</p>
+        <svg
+          class="w-6 h-6 text-white mx-auto"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M19 9l-7 7-7-7"
+          ></path>
+        </svg>
+      </div>
+    </section>
+
+    <!-- Galeri Kenangan -->
+    <section class="galeri-section">
+      <h2 class="text-3xl font-bold text-white mb-8">Galeri Kenangan</h2>
+      <p class="text-lg text-white mb-8">
+        Setiap foto menyimpan cerita, setiap momen adalah harta yang tak
+        ternilai
+      </p>
+
+      <!-- Galeri Foto -->
+      <div class="gallery">
+        <!-- Foto 1 -->
+        <div class="gallery-item">
+          <img src="assets/cintung.jpg" alt="Photo 1" />
+          <div class="caption">Cinta dan Mas Azmi</div>
+        </div>
+        <!-- Foto 2 -->
+        <div class="gallery-item">
+          <img src="assets/cintung2.jpg" alt="Photo 2" />
+          <div class="caption">Momen Bahagia</div>
+        </div>
+        <!-- Foto 3 -->
+        <div class="gallery-item">
+          <img src="assets/cintung3.jpg" alt="Photo 3" />
+          <div class="caption">Kenangan Manis</div>
+        </div>
+        <!-- Foto 4 -->
+        <div class="gallery-item">
+          <img src="assets/cintung4.jpg" alt="Photo 4" />
+          <div class="caption">Together Forever</div>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      // Fungsi untuk memastikan posisi scroll di landing section
+      window.addEventListener("load", function () {
+        const landingSection = document.querySelector(
+          ".relative.w-full.h-screen"
+        ); // Pilih section landing
+        landingSection.scrollIntoView({
+          behavior: "smooth", // Efek scroll halus
+          block: "start", // Menyusun ke bagian atas elemen
+        });
+      });
+
+      // Menampilkan Section Gallery saat tombol diklik
+      document
+        .getElementById("showGalleryBtn")
+        .addEventListener("click", function () {
+          // Cari elemen yang ingin dituju
+          const gallerySection = document.querySelector(".galeri-section");
+
+          // Gunakan scrollIntoView untuk scroll ke bagian tersebut
+          gallerySection.scrollIntoView({
+            behavior: "smooth", // Efek scroll halus
+            block: "start", // Menyusun ke bagian atas elemen
+          });
+        });
+    </script>
+  </body>
+</html>
