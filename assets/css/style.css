@@ -1,0 +1,251 @@
+/* Memuat font Dancing Script dari Google Fonts */
+      @import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap");
+
+      /* Menambahkan scroll halus pada seluruh halaman */
+      html {
+        scroll-behavior: smooth;
+        overflow: scroll; /* Pastikan scroll tetap ada */
+        height: 100%; /* Pastikan elemen bisa menggulir */
+      }
+
+      /* Menggunakan font secara manual di sini */
+      body {
+        font-family: "Dancing Script", sans-serif;
+        overflow-x: hidden; /* Mencegah scrolling horizontal pada mobile */
+      }
+
+      /* Menghilangkan scrollbar di seluruh halaman */
+      ::-webkit-scrollbar {
+        width: 0px; /* Menghapus lebar scrollbar */
+        height: 0px; /* Menghapus lebar scrollbar horizontal */
+      }
+
+      /* Garis separator */
+      .separator {
+        width: 100px;
+        height: 1px;
+        background: rgba(255, 255, 255, 0.5); /* Garis putih tipis */
+        margin: 20px auto; /* Jarak atas dan bawah */
+        box-shadow: 0 0 5px rgba(255, 255, 255, 0.6); /* Efek shadow untuk sedikit cahaya */
+      }
+
+      /* Efek highlight pada teks */
+      .highlight-text {
+        display: inline-block;
+        background-image: linear-gradient(
+          90deg,
+          #ff007f,
+          #ff8c00,
+          #ff007f,
+          #ff8c00
+        );
+        background-size: 300% 100%;
+        background-position: -100% 0;
+        color: transparent;
+        background-clip: text;
+        -webkit-background-clip: text; /* Vendor prefix untuk Webkit (Safari, Chrome) */
+        -moz-background-clip: text; /* Vendor prefix untuk Firefox */
+        animation: highlight 4s ease-in-out infinite alternate;
+        text-shadow: 0 0 10px rgba(255, 0, 127, 0.6),
+          0 0 20px rgba(255, 140, 0, 0.5); /* Glow effect */
+      }
+
+      /* Animasi untuk efek highlight berjalan */
+      @keyframes highlight {
+        0% {
+          background-position: -100% 0;
+          text-shadow: 0 0 10px rgba(255, 0, 127, 0.6),
+            0 0 20px rgba(255, 140, 0, 0.5);
+        }
+        50% {
+          background-position: 100% 0;
+          text-shadow: 0 0 20px rgba(255, 0, 127, 1),
+            0 0 40px rgba(255, 140, 0, 0.8);
+        }
+        100% {
+          background-position: -100% 0;
+          text-shadow: 0 0 10px rgba(255, 0, 127, 0.6),
+            0 0 20px rgba(255, 140, 0, 0.5);
+        }
+      }
+
+      /* Delay untuk kata "sayang" */
+      .highlight-sayang {
+        animation-delay: 0s; /* Efek pertama */
+      }
+
+      /* Delay untuk kata "Mas Azmi" */
+      .highlight-masazmi {
+        animation-delay: 1s; /* Efek kedua */
+      }
+
+      /* Efek highlight hanya pada "Cintung" */
+      .highlight-cintung {
+        animation-delay: 2s; /* Efek ketiga */
+      }
+      .highlight-alovestoryabout {
+        animation-delay: -1s; /* Efek ketiga */
+      }
+      /* Styling Galeri Foto */
+      .gallery {
+        display: grid;
+        grid-template-columns: repeat(
+          auto-fill,
+          minmax(250px, 1fr)
+        ); /* Menyesuaikan dengan ukuran layar */
+        gap: 20px; /* Menambah jarak antar card */
+        margin-top: 40px;
+      }
+
+      /* Card Gambar dengan Variasi Penempatan dan Padding */
+      .gallery-item {
+        position: relative;
+        overflow: hidden;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        height: 250px; /* Menyesuaikan ukuran gambar untuk lebih kecil */
+        padding: 10px; /* Menambah jarak kiri kanan */
+      }
+
+      /* Variasi transformasi gambar untuk tampilan lebih artistik */
+      .gallery-item:nth-child(1) {
+        transform: rotate(-5deg) scale(1.1);
+      }
+
+      .gallery-item:nth-child(2) {
+        transform: translateY(15px) scale(0.95);
+      }
+
+      .gallery-item:nth-child(3) {
+        transform: rotate(5deg) scale(1.05);
+      }
+
+      .gallery-item:nth-child(4) {
+        transform: translateX(10px) scale(0.9);
+      }
+
+      .gallery-item:hover {
+        transform: rotate(0) scale(1); /* Kembali ke posisi normal saat hover */
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3); /* Menambah shadow saat hover */
+      }
+
+      .gallery img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* Membuat gambar tetap crop dengan baik */
+        border-radius: 10px;
+      }
+
+      /* Styling Caption untuk Foto */
+      .caption {
+        position: absolute;
+        bottom: 10px;
+        left: 10px;
+        background-color: rgba(0, 0, 0, 0.5);
+        color: white;
+        padding: 5px 10px;
+        border-radius: 5px;
+        font-size: 1rem;
+      }
+
+      /* Jarak dan padding untuk Scroll */
+      .scroll-section {
+        margin-bottom: 80px; /* Memberikan ruang lebih pada bagian bawah */
+      }
+
+      /* Styling untuk Galeri Kenangan */
+      .galeri-kenangan {
+        text-align: center;
+        margin-top: 40px;
+        margin-bottom: 50px;
+      }
+
+      .galeri-kenangan h2 {
+        font-size: 2.5rem;
+        color: #e02e7c; /* Warna merah muda cerah */
+        font-weight: bold;
+      }
+
+      .galeri-kenangan p {
+        font-size: 1.2rem;
+        color: #555;
+        margin-top: 10px;
+      }
+
+      /* Media Query untuk Desktop */
+      @media (min-width: 1024px) {
+        .gallery {
+          grid-template-columns: repeat(
+            4,
+            1fr
+          ); /* Menyusun 4 kolom di layar desktop */
+          gap: 30px; /* Menambah jarak antar gambar di desktop */
+        }
+
+        .gallery-item {
+          height: 300px; /* Menambah tinggi gambar untuk desktop */
+        }
+      }
+
+      /* Media Query untuk Tablet */
+      @media (max-width: 1024px) {
+        .gallery {
+          grid-template-columns: repeat(
+            2,
+            1fr
+          ); /* Menyusun 2 kolom untuk tablet */
+          gap: 20px; /* Menambah jarak antar gambar */
+        }
+
+        .gallery-item {
+          height: 250px; /* Menyesuaikan ukuran gambar untuk tablet */
+        }
+      }
+
+      /* Media Query untuk Mobile */
+      @media (max-width: 768px) {
+        .gallery {
+    grid-template-columns: repeat(2, 1fr); /* Menyusun 2 kolom untuk layar mobile */
+          gap: 15px; /* Menambah jarak antar gambar */
+        }
+
+        .gallery-item {
+          height: 200px; /* Menyesuaikan ukuran gambar untuk mobile */
+        }
+      }
+
+      /* Menghapus warna latar belakang pada Galeri */
+      .galeri-section {
+        /* background: linear-gradient(135deg, #f7a7c4, #d1b0fc); Menghilangkan warna latar belakang */
+        padding: 40px 0;
+        text-align: center;
+        opacity: 0;
+        animation: fadeIn 1s forwards;
+      }
+
+      /* Efek Fade In saat scroll atau page load */
+      @keyframes fadeIn {
+        0% {
+          opacity: 0;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+
+      .gallery-item:hover {
+  transform: scale(1.05); /* Memberikan efek zoom in */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4); /* Efek bayangan lebih dramatis */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+      .gallery-item:hover .caption {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.caption {
+  opacity: 0;
+  transform: translateY(10px);
+}
